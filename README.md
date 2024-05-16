@@ -84,7 +84,6 @@ This project uses web scraping techniques, so be mindful of Amazon's terms of se
   -Interacts with web elements like buttons and links.
    
 5. LLM Service (Hugging Face Inference API):
-
   -Communicates with the external LLM (e.g., LLaMA 2 on Hugging Face).
   -Sends prompts containing HTML content to the LLM.
   -Receives responses from the LLM, including extracted order data and instructions for navigation.
