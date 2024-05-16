@@ -66,40 +66,41 @@ This project uses web scraping techniques, so be mindful of Amazon's terms of se
 ## Architecture of the system
 
 1. User:
+   
   -Initiates the order fetching process by providing their Amazon credentials and any preferences.
    
-2. Agent(Orchestrator):
+3. Agent(Orchestrator):
   -The central controller of the system.
   -Manages the overall workflow and coordinates actions between different components.
   -Responsible for high-level decision-making based on information from the LLM and the web scraper.
    
-3. Amazon Authenticator:
+4. Amazon Authenticator:
   -Handles user authentication securely.
   -Retrieves credentials from environment variables or a secure store.
   -Interacts with the Amazon website to log the user in.
    
-4. Web Scraper (Selenium WebDriver):
+5. Web Scraper (Selenium WebDriver):
   -Automates browser actions to navigate the Amazon website.
   -Retrieves the HTML content of order history and order details pages.
   -Interacts with web elements like buttons and links.
    
-5. LLM Service (Hugging Face Inference API):
+6. LLM Service (Hugging Face Inference API):
   -Communicates with the external LLM (e.g., LLaMA 2 on Hugging Face).
   -Sends prompts containing HTML content to the LLM.
   -Receives responses from the LLM, including extracted order data and instructions for navigation.
   -Optionally, implements caching to optimize performance.
   
-6. LLM Model (Local or Cached):
+7. LLM Model (Local or Cached):
   -Processes the HTML content received from the web scraper.
   -Extract relevant order details using the LLM's language understanding capabilities.
   -Analyze the page structure to determine navigation actions (e.g., finding "Next Page" buttons).
   -Construct prompts for the LLM service.
    
-7. Data Storage:
+8. Data Storage:
   -Saves extracted order data in a structured format (e.g., JSON).
   -May also store raw HTML files for future reference.
   -Can be implemented using local files or a database.
   
-8. Logger:
+9. Logger:
   -Records important events, errors, and warnings throughout the process.
   -Helps in monitoring and debugging the agent's behavior.
